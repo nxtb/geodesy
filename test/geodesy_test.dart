@@ -5,69 +5,69 @@ void main() {
   final geodesy = Geodesy();
 
   test('distanceBetweenTwoGeoPoints', () {
-    final l1 = const LatLng(50.06638889, 5.71472222);
-    final l2 = const LatLng(58.64388889, 3.07000000);
+    final l1 = LatLng(50.06638889, 5.71472222);
+    final l2 = LatLng(58.64388889, 3.07000000);
     final distance = geodesy.distanceBetweenTwoGeoPoints(l1, l2);
     final expectedDistance = 968853.5466871752;
     expect(distance, expectedDistance);
   });
 
   test('destinationPointByDistanceAndBearing', () {
-    final l3 = const LatLng(51.4778, -0.0015);
+    final l3 = LatLng(51.4778, -0.0015);
     final destinationPoint =
         geodesy.destinationPointByDistanceAndBearing(l3, 7794.0, 300.7);
-    final expectedDestinationPoint = const LatLng(51.513546, -0.098345);
+    final expectedDestinationPoint = LatLng(51.513546, -0.098345);
     expect(destinationPoint.toString(), expectedDestinationPoint.toString());
   });
 
   test('bearingBetweenTwoGeoPoints', () {
-    final l4 = const LatLng(52.205, 0.119);
-    final l5 = const LatLng(48.857, 2.351);
+    final l4 = LatLng(52.205, 0.119);
+    final l5 = LatLng(48.857, 2.351);
     final bearing = geodesy.bearingBetweenTwoGeoPoints(l4, l5);
     final expectedBearing = 156.16658258153177;
     expect(bearing, expectedBearing);
   });
 
   test('finalBearingBetweenTwoGeoPoints', () {
-    final l4 = const LatLng(52.205, 0.119);
-    final l5 = const LatLng(48.857, 2.351);
+    final l4 = LatLng(52.205, 0.119);
+    final l5 = LatLng(48.857, 2.351);
     final finalBearing = geodesy.finalBearingBetweenTwoGeoPoints(l4, l5);
     final expectedFinalBearing = 157.89044019049243;
     expect(finalBearing, expectedFinalBearing);
   });
 
   test('midPointBetweenTwoGeoPoints', () {
-    final l4 = const LatLng(52.205, 0.119);
-    final l5 = const LatLng(48.857, 2.351);
+    final l4 = LatLng(52.205, 0.119);
+    final l5 = LatLng(48.857, 2.351);
     final midpoint = geodesy.midPointBetweenTwoGeoPoints(l4, l5);
-    final expectedMidpoint = const LatLng(50.536327, 1.274614);
+    final expectedMidpoint = LatLng(50.536327, 1.274614);
     expect(midpoint.toString(), expectedMidpoint.toString());
   });
 
   test('isGeoPointInBoundingBox', () {
-    final l3 = const LatLng(51.4778, -0.0015);
-    final l4 = const LatLng(52.205, 0.119);
-    final l5 = const LatLng(48.857, 2.351);
+    final l3 = LatLng(51.4778, -0.0015);
+    final l4 = LatLng(52.205, 0.119);
+    final l5 = LatLng(48.857, 2.351);
     final inBoundingBox = geodesy.isGeoPointInBoundingBox(l3, l5, l4);
     expect(inBoundingBox, false);
   });
 
   test('intersectionByPaths', () {
-    final l4 = const LatLng(52.205, 0.119);
-    final l5 = const LatLng(48.857, 2.351);
+    final l4 = LatLng(52.205, 0.119);
+    final l5 = LatLng(48.857, 2.351);
     final b1 = 108.547;
     final b2 = 32.435;
     final intersectionByPaths = geodesy.intersectionByPaths(l4, l5, b1, b2);
     final expectedIntersectionByPaths =
-        const LatLng(51.15151144654275, 4.698604211862175);
+        LatLng(51.15151144654275, 4.698604211862175);
     expect(
         intersectionByPaths.toString(), expectedIntersectionByPaths.toString());
   });
 
   test('crossTrackDistanceTo', () {
-    final l4 = const LatLng(52.205, 0.119);
-    final l5 = const LatLng(48.857, 2.351);
-    final l6 = const LatLng(50.587, 1.231);
+    final l4 = LatLng(52.205, 0.119);
+    final l5 = LatLng(48.857, 2.351);
+    final l6 = LatLng(50.587, 1.231);
     final distanceToGreatCircle = geodesy.crossTrackDistanceTo(l4, l5, l6);
     final expectedDistanceToGreatCircle = 1240.3379338876143;
     expect(distanceToGreatCircle, expectedDistanceToGreatCircle);
@@ -75,18 +75,18 @@ void main() {
 
   test('crossTrackDistanceTo', () {
     var poly = <LatLng>[
-      const LatLng(1.0, 1.0),
-      const LatLng(1.0, 2.0),
-      const LatLng(2.0, 2.0),
-      const LatLng(2.0, 1.0)
+      LatLng(1.0, 1.0),
+      LatLng(1.0, 2.0),
+      LatLng(2.0, 2.0),
+      LatLng(2.0, 1.0)
     ];
-    var l7 = const LatLng(1.5, 1.5);
+    var l7 = LatLng(1.5, 1.5);
     var isGeoPointInPolygon = geodesy.isGeoPointInPolygon(l7, poly);
     expect(isGeoPointInPolygon, true);
   });
 
   test('pointsInRange', () {
-    final point = const LatLng(51.0, 0);
+    final point = LatLng(51.0, 0);
     final distance = 10000;
     final pointNotInRange = geodesy.destinationPointByDistanceAndBearing(
         point, distance + 10, 420.0);
@@ -116,17 +116,17 @@ void main() {
 
   test('getRectangleBounds returns correct rectangle bounds', () {
     List<LatLng> polygonCoords = [
-      const LatLng(37.7749, -122.4194),
-      const LatLng(37.3382, -121.8863),
-      const LatLng(37.7749, -121.4194),
-      const LatLng(37.7749, -123.4194),
+      LatLng(37.7749, -122.4194),
+      LatLng(37.3382, -121.8863),
+      LatLng(37.7749, -121.4194),
+      LatLng(37.7749, -123.4194),
     ];
 
     List<LatLng> expectedRectangleBounds = [
-      const LatLng(37.3382, -123.4194),
-      const LatLng(37.3382, -121.4194),
-      const LatLng(37.7749, -121.4194),
-      const LatLng(37.7749, -123.4194),
+      LatLng(37.3382, -123.4194),
+      LatLng(37.3382, -121.4194),
+      LatLng(37.7749, -121.4194),
+      LatLng(37.7749, -123.4194),
     ];
 
     List<LatLng> rectangleBounds = geodesy.getRectangleBounds(polygonCoords);
@@ -145,16 +145,14 @@ void main() {
     test(
         '''should calculate the correct bounding box for a given center point and distance''',
         () {
-      final centerPoint = const LatLng(40.0, -73.0); // Example center point
+      final centerPoint = LatLng(40.0, -73.0); // Example center point
       final distanceInKm = 10.0; // Example distance in kilometers
 
       final result = geodesy.calculateBoundingBox(centerPoint, distanceInKm);
 
       // Expected coordinates for the bounding box
-      final expectedTopLeft =
-          const LatLng(40.09090909090909, -73.16323914050199);
-      final expectedBottomRight =
-          const LatLng(39.90909090909091, -72.836760859498);
+      final expectedTopLeft = LatLng(40.09090909090909, -73.16323914050199);
+      final expectedBottomRight = LatLng(39.90909090909091, -72.836760859498);
 
       // Check if the calculated bounding box matches the expected coordinates
       expect(result[0].latitude, closeTo(expectedTopLeft.latitude, 0.1));
@@ -169,10 +167,10 @@ void main() {
   test('findPolygonCentroid calculates the centroid correctly', () {
     // Create a test polygon
     List<LatLng> polygon = [
-      const LatLng(0, 0),
-      const LatLng(0, 4),
-      const LatLng(4, 4),
-      const LatLng(4, 0),
+      LatLng(0, 0),
+      LatLng(0, 4),
+      LatLng(4, 4),
+      LatLng(4, 0),
     ];
 
     // Calculate the centroid
@@ -186,17 +184,17 @@ void main() {
   // Polygon Intersection
   test('Intersection of two polygons', () {
     final polygon1 = [
-      const LatLng(0, 0),
-      const LatLng(0, 2),
-      const LatLng(2, 2),
-      const LatLng(2, 0),
+      LatLng(0, 0),
+      LatLng(0, 2),
+      LatLng(2, 2),
+      LatLng(2, 0),
     ];
 
     final polygon2 = [
-      const LatLng(1, 1),
-      const LatLng(1, 3),
-      const LatLng(3, 3),
-      const LatLng(3, 1),
+      LatLng(1, 1),
+      LatLng(1, 3),
+      LatLng(3, 3),
+      LatLng(3, 1),
     ];
 
     final intersectionPoints =
@@ -226,18 +224,18 @@ void main() {
   test('Calculate Area of Polygon with Hole', () {
     // Define the outer polygon
     final outerPolygon = [
-      const LatLng(0.0, 0.0),
-      const LatLng(0.0, 1.0),
-      const LatLng(1.0, 1.0),
-      const LatLng(1.0, 0.0),
+      LatLng(0.0, 0.0),
+      LatLng(0.0, 1.0),
+      LatLng(1.0, 1.0),
+      LatLng(1.0, 0.0),
     ];
 
     // Define a hole within the outer polygon
     final hole1 = [
-      const LatLng(0.25, 0.25),
-      const LatLng(0.25, 0.75),
-      const LatLng(0.75, 0.75),
-      const LatLng(0.75, 0.25),
+      LatLng(0.25, 0.25),
+      LatLng(0.25, 0.75),
+      LatLng(0.75, 0.75),
+      LatLng(0.75, 0.25),
     ];
 
     // Combine the outer polygon and holes
@@ -255,8 +253,8 @@ void main() {
 
   //
   test('Equirectangular Distance Calculation', () {
-    final LatLng point1 = const LatLng(52.5200, 13.4050); // Berlin, Germany
-    final LatLng point2 = const LatLng(48.8566, 2.3522); // Paris, France
+    final LatLng point1 = LatLng(52.5200, 13.4050); // Berlin, Germany
+    final LatLng point2 = LatLng(48.8566, 2.3522); // Paris, France
 
     double distance = geodesy.equirectangularDistance(point1, point2);
 
@@ -269,8 +267,8 @@ void main() {
     expect(distance, closeTo(expectedDistance, tolerance));
   });
   test('Spherical Law of Cosines Distance Calculation', () {
-    final LatLng point1 = const LatLng(52.5200, 13.4050); // Berlin, Germany
-    final LatLng point2 = const LatLng(48.8566, 2.3522); // Paris, France
+    final LatLng point1 = LatLng(52.5200, 13.4050); // Berlin, Germany
+    final LatLng point2 = LatLng(48.8566, 2.3522); // Paris, France
 
     double distance = geodesy.sphericalLawOfCosinesDistance(point1, point2);
 
@@ -283,7 +281,7 @@ void main() {
     expect(distance, closeTo(expectedDistance, tolerance));
   });
   test('Destination point for 45 degree bearing and 100 km distance', () {
-    final initialPoint = const LatLng(52.5200, 13.4050); // Berlin, Germany
+    final initialPoint = LatLng(52.5200, 13.4050); // Berlin, Germany
     final bearingDegrees = 45.0; // 45 degrees bearing (northeast)
     final distanceKm = 100.0; // 100 kilometers distance
 
@@ -302,8 +300,8 @@ void main() {
   });
 
   test('Midpoint between Berlin and Paris', () {
-    final point1 = const LatLng(52.5200, 13.4050); // Berlin, Germany
-    final point2 = const LatLng(48.8566, 2.3522); // Paris, France
+    final point1 = LatLng(52.5200, 13.4050); // Berlin, Germany
+    final point2 = LatLng(48.8566, 2.3522); // Paris, France
 
     LatLng midpoint = geodesy.calculateMidpoint(point1, point2);
 
@@ -318,8 +316,8 @@ void main() {
     expect(midpoint.longitude, closeTo(expectedLongitude, tolerance));
   });
   test('Points along Great Circle Arc', () {
-    final startPoint = const LatLng(52.5200, 13.4050); // Berlin, Germany
-    final endPoint = const LatLng(48.8566, 2.3522); // Paris, France
+    final startPoint = LatLng(52.5200, 13.4050); // Berlin, Germany
+    final endPoint = LatLng(48.8566, 2.3522); // Paris, France
     final numPoints = 5; // Number of points along the arc
 
     List<LatLng> arcPoints = geodesy.calculatePointsAlongGreatCircle(
@@ -327,11 +325,11 @@ void main() {
 
     // Expected points along the great circle arc (approximate)
     List<LatLng> expectedPoints = [
-      const LatLng(52.5200, 13.4050),
-      const LatLng(51.78732, 11.19444),
-      const LatLng(51.05464, 8.98388),
-      const LatLng(50.321960000000004, 6.773319999999998),
-      const LatLng(49.589279999999995, 4.562759999999999)
+      LatLng(52.5200, 13.4050),
+      LatLng(51.78732, 11.19444),
+      LatLng(51.05464, 8.98388),
+      LatLng(50.321960000000004, 6.773319999999998),
+      LatLng(49.589279999999995, 4.562759999999999)
     ];
 
     // Define a tolerance for latitude and longitude comparisons
@@ -348,10 +346,10 @@ void main() {
   test('Calculate the area of a square', () {
     // Create a square with four vertices
     List<LatLng> squarePoints = [
-      const LatLng(0.0, 0.0),
-      const LatLng(0.0, 1.0),
-      const LatLng(1.0, 1.0),
-      const LatLng(1.0, 0.0),
+      LatLng(0.0, 0.0),
+      LatLng(0.0, 1.0),
+      LatLng(1.0, 1.0),
+      LatLng(1.0, 0.0),
     ];
 
     // Calculate the area of the square
@@ -364,8 +362,8 @@ void main() {
   test('Calculate the length of a straight line in meters', () {
     // Create a straight line with two points
     List<LatLng> linePoints = [
-      const LatLng(0.0, 0.0),
-      const LatLng(0.0, 1.0),
+      LatLng(0.0, 0.0),
+      LatLng(0.0, 1.0),
     ];
 
     // Calculate the length of the line in meters
@@ -378,10 +376,10 @@ void main() {
 
   test('Lines are parallel and do not intersect', () {
     // Create two parallel lines with no intersection
-    LatLng start1 = const LatLng(0.0, 0.0);
-    LatLng end1 = const LatLng(1.0, 0.0);
-    LatLng start2 = const LatLng(0.0, 1.0);
-    LatLng end2 = const LatLng(1.0, 1.0);
+    LatLng start1 = LatLng(0.0, 0.0);
+    LatLng end1 = LatLng(1.0, 0.0);
+    LatLng start2 = LatLng(0.0, 1.0);
+    LatLng end2 = LatLng(1.0, 1.0);
 
     // Calculate intersection point
     LatLng? intersection =
@@ -393,15 +391,14 @@ void main() {
 
   test('Project a point onto a geodesic line', () {
     // Define the geodesic line
-    LatLng start = const LatLng(42.345, -71.098);
-    LatLng end = const LatLng(42.355, -71.108);
+    LatLng start = LatLng(42.345, -71.098);
+    LatLng end = LatLng(42.355, -71.108);
 
     // Define the point to be projected
-    LatLng point = const LatLng(42.350, -71.103);
+    LatLng point = LatLng(42.350, -71.103);
 
     // Calculate the expected projected point manually (e.g., using a GIS tool)
-    LatLng expectedProjection =
-        const LatLng(42.3512233054802, -71.09799913598741);
+    LatLng expectedProjection = LatLng(42.3512233054802, -71.09799913598741);
 
     // Project the point onto the geodesic line
     LatLng projection = geodesy.projectPointOntoGeodesicLine(point, start, end);

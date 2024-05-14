@@ -76,3 +76,4 @@ coverage/
 coverage_badge.svg
 !coverage/lcov.info
 TODO.md
+.fvm/flutter_sdk

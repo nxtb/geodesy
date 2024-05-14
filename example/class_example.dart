@@ -3,13 +3,13 @@ import 'package:geodesy/geodesy.dart' show Geodesy;
 
 void main() {
   final geodesy = Geodesy();
-  final l1 = const LatLng(50.06638889, 5.71472222);
-  final l2 = const LatLng(58.64388889, 3.07000000);
+  final l1 = LatLng(50.06638889, 5.71472222);
+  final l2 = LatLng(58.64388889, 3.07000000);
 
   final distance = geodesy.distanceBetweenTwoGeoPoints(l1, l2);
   print('[distanceBetweenTwoGeoPoints] Distance: ' + distance.toString());
 
-  final l3 = const LatLng(51.4778, -0.0015);
+  final l3 = LatLng(51.4778, -0.0015);
   final destinationPoint =
       geodesy.destinationPointByDistanceAndBearing(l3, 7794.0, 300.7);
   print('[destinationPointByDistanceAndBearing] Lat: ' +
@@ -17,8 +17,8 @@ void main() {
   print('[destinationPointByDistanceAndBearing] Lng: ' +
       destinationPoint.longitude.toString());
 
-  final l4 = const LatLng(52.205, 0.119);
-  final l5 = const LatLng(48.857, 2.351);
+  final l4 = LatLng(52.205, 0.119);
+  final l5 = LatLng(48.857, 2.351);
   final bearing = geodesy.bearingBetweenTwoGeoPoints(l4, l5);
   print('[bearingBetweenTwoGeoPoints] Bearing: ' + bearing.toString());
 
@@ -42,17 +42,17 @@ void main() {
   print(
       '[intersectionByPaths] Lng: ' + intersectionByPaths.longitude.toString());
 
-  final l6 = const LatLng(50.587, 1.231);
+  final l6 = LatLng(50.587, 1.231);
   final distanceToGreatCircle = geodesy.crossTrackDistanceTo(l4, l5, l6);
   print('[crossTrackDistanceTo] :' + distanceToGreatCircle.toString());
 
   final poly = <LatLng>[
-    const LatLng(1.0, 1.0),
-    const LatLng(1.0, 2.0),
-    const LatLng(2.0, 2.0),
-    const LatLng(2.0, 1.0)
+    LatLng(1.0, 1.0),
+    LatLng(1.0, 2.0),
+    LatLng(2.0, 2.0),
+    LatLng(2.0, 1.0)
   ];
-  final l7 = const LatLng(1.5, 1.5);
+  final l7 = LatLng(1.5, 1.5);
   final isGeoPointInPolygon = geodesy.isGeoPointInPolygon(l7, poly);
   print('[isGeoPointInPolygon] :' + isGeoPointInPolygon.toString());
 
@@ -70,10 +70,10 @@ void main() {
 
   // Polygon Coords
   List<LatLng> polygonCoords = [
-    const LatLng(37.7749, -122.4194),
-    const LatLng(37.3382, -121.8863),
-    const LatLng(37.7749, -121.4194),
-    const LatLng(37.7749, -123.4194),
+    LatLng(37.7749, -122.4194),
+    LatLng(37.3382, -121.8863),
+    LatLng(37.7749, -121.4194),
+    LatLng(37.7749, -123.4194),
   ];
 
   List<LatLng> rectangleBounds = geodesy.getRectangleBounds(polygonCoords);
@@ -85,7 +85,7 @@ void main() {
 
   // Calculate Bounding Box
   // Example central position (San Francisco)
-  final centerPoint = const LatLng(37.7749, -122.4194);
+  final centerPoint = LatLng(37.7749, -122.4194);
   // Example distance in kilometers
   final distanceInKm = 1.0;
 
@@ -97,10 +97,10 @@ void main() {
 
   // Polygon Centroid
   List<LatLng> polygon = [
-    const LatLng(0, 0),
-    const LatLng(4, 0),
-    const LatLng(4, 4),
-    const LatLng(0, 4)
+    LatLng(0, 0),
+    LatLng(4, 0),
+    LatLng(4, 4),
+    LatLng(0, 4)
   ];
 
   LatLng centroid = geodesy.findPolygonCentroid(polygon);
@@ -109,17 +109,17 @@ void main() {
 
   // Polygon Intersection
   final List<LatLng> polygon1 = [
-    const LatLng(0, 0),
-    const LatLng(0, 2),
-    const LatLng(2, 2),
-    const LatLng(2, 0),
+    LatLng(0, 0),
+    LatLng(0, 2),
+    LatLng(2, 2),
+    LatLng(2, 0),
   ];
 
   final List<LatLng> polygon2 = [
-    const LatLng(1, 1),
-    const LatLng(1, 3),
-    const LatLng(3, 3),
-    const LatLng(3, 1),
+    LatLng(1, 1),
+    LatLng(1, 3),
+    LatLng(3, 3),
+    LatLng(3, 1),
   ];
 
   final List<LatLng> intersectionPoints =
@@ -131,8 +131,8 @@ void main() {
   }
 
   // Vincenty formula for Geodesic Distance Calculation
-  final LatLng point1 = const LatLng(37.7749, -122.4194); // San Francisco
-  final LatLng point2 = const LatLng(34.0522, -118.2437); // Los Angeles
+  final LatLng point1 = LatLng(37.7749, -122.4194); // San Francisco
+  final LatLng point2 = LatLng(34.0522, -118.2437); // Los Angeles
 
   final double calculatedDistance = geodesy.vincentyDistance(
       point1.latitude, point1.longitude, point2.latitude, point2.longitude);
@@ -144,18 +144,18 @@ void main() {
 
   // Define the outer polygon
   final outerPolygon = [
-    const LatLng(0.0, 0.0),
-    const LatLng(0.0, 1.0),
-    const LatLng(1.0, 1.0),
-    const LatLng(1.0, 0.0),
+    LatLng(0.0, 0.0),
+    LatLng(0.0, 1.0),
+    LatLng(1.0, 1.0),
+    LatLng(1.0, 0.0),
   ];
 
   // Define a hole within the outer polygon
   final hole1 = [
-    const LatLng(0.25, 0.25),
-    const LatLng(0.25, 0.75),
-    const LatLng(0.75, 0.75),
-    const LatLng(0.75, 0.25),
+    LatLng(0.25, 0.25),
+    LatLng(0.25, 0.75),
+    LatLng(0.75, 0.75),
+    LatLng(0.75, 0.25),
   ];
 
   final holes = [hole1];
@@ -164,8 +164,8 @@ void main() {
   print("Area of polygon with holes: $area");
 
   // Equirectangular approximation Calculation
-  final firstPoint = const LatLng(52.5200, 13.4050); // Berlin, Germany
-  final secondPoint = const LatLng(48.8566, 2.3522); // Paris, France
+  final firstPoint = LatLng(52.5200, 13.4050); // Berlin, Germany
+  final secondPoint = LatLng(48.8566, 2.3522); // Paris, France
 
   double equirectangularDistance =
       geodesy.equirectangularDistance(firstPoint, secondPoint);
@@ -174,8 +174,8 @@ void main() {
       ''');
 
   /// Calculate Spherical Law Of Cosines Distance
-  final bGPoint = const LatLng(52.5200, 13.4050); // Berlin, Germany
-  final pFPoint = const LatLng(48.8566, 2.3522); // Paris, France
+  final bGPoint = LatLng(52.5200, 13.4050); // Berlin, Germany
+  final pFPoint = LatLng(48.8566, 2.3522); // Paris, France
 
   double sLCDdistance = geodesy.sphericalLawOfCosinesDistance(bGPoint, pFPoint);
   print(
@@ -183,7 +183,7 @@ void main() {
       ''');
 
   /// Geodetic Point Manipulation - Rhumb Line Destination Formula
-  final initialPoint = const LatLng(52.5200, 13.4050); // Berlin, Germany
+  final initialPoint = LatLng(52.5200, 13.4050); // Berlin, Germany
   final bearingDegrees = 45.0; // 45 degrees bearing (northeast)
   final distanceKm = 100.0; // 100 kilometers distance
 
@@ -195,8 +195,8 @@ void main() {
       ${destinationPoints.longitude}''');
 
   /// Geodetic Point Manipulation - Midpoint between two points
-  final bgPoint1 = const LatLng(52.5200, 13.4050); // Berlin, Germany
-  final pFPoint2 = const LatLng(48.8566, 2.3522); // Paris, France
+  final bgPoint1 = LatLng(52.5200, 13.4050); // Berlin, Germany
+  final pFPoint2 = LatLng(48.8566, 2.3522); // Paris, France
 
   LatLng midPointBetweenTwoPoints =
       geodesy.calculateMidpoint(bgPoint1, pFPoint2);
@@ -205,8 +205,8 @@ void main() {
       ${midPointBetweenTwoPoints.longitude}''');
 
   /// Geodetic Point Manipulation - Calculate Point Along Great Circle
-  final startPoint = const LatLng(52.5200, 13.4050); // Berlin, Germany
-  final endPoint = const LatLng(48.8566, 2.3522); // Paris, France
+  final startPoint = LatLng(52.5200, 13.4050); // Berlin, Germany
+  final endPoint = LatLng(48.8566, 2.3522); // Paris, France
   final numPoints = 5; // Number of points along the arc
 
   List<LatLng> arcPoints =
@@ -220,9 +220,9 @@ void main() {
   /// PolyLine Length Calculation
   // Create a list of LatLng points representing your polyLine
   List<LatLng> polyLinePoints = [
-    const LatLng(42.345, -71.098), // Add your points here
-    const LatLng(42.355, -71.108),
-    const LatLng(42.365, -71.118),
+    LatLng(42.345, -71.098), // Add your points here
+    LatLng(42.355, -71.108),
+    LatLng(42.365, -71.118),
     // Add more points as needed
   ];
 
@@ -234,9 +234,9 @@ void main() {
   /// Polygon Area by Using Shoelace formula
   // Create a list of LatLng points representing your polygon
   List<LatLng> polygonPoints = [
-    const LatLng(42.345, -71.098), // Add your points here
-    const LatLng(42.355, -71.108),
-    const LatLng(42.365, -71.118),
+    LatLng(42.345, -71.098), // Add your points here
+    LatLng(42.355, -71.108),
+    LatLng(42.365, -71.118),
     // Add more points as needed
   ];
 
@@ -247,10 +247,10 @@ void main() {
 
   /// Calculate intersection points of two geodesic lines
   // Example geodesic lines
-  LatLng start1 = const LatLng(42.345, -71.098);
-  LatLng end1 = const LatLng(42.355, -71.108);
-  LatLng start2 = const LatLng(42.355, -71.108);
-  LatLng end2 = const LatLng(42.365, -71.118);
+  LatLng start1 = LatLng(42.345, -71.098);
+  LatLng end1 = LatLng(42.355, -71.108);
+  LatLng start2 = LatLng(42.355, -71.108);
+  LatLng end2 = LatLng(42.365, -71.118);
 
   // Calculate intersection point
   LatLng? intersection =
@@ -265,9 +265,9 @@ void main() {
 
   /// Project a point onto a geodesic line
   // Example geodesic line and point
-  LatLng start = const LatLng(42.345, -71.098);
-  LatLng end = const LatLng(42.355, -71.108);
-  LatLng point = const LatLng(42.350, -71.103);
+  LatLng start = LatLng(42.345, -71.098);
+  LatLng end = LatLng(42.355, -71.108);
+  LatLng point = LatLng(42.350, -71.103);
 
   // Project the point onto the geodesic line
   LatLng projection = geodesy.projectPointOntoGeodesicLine(point, start, end);
